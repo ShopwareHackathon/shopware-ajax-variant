@@ -10,16 +10,17 @@
             me._on(me.$el, 'click', $.proxy(me.onChange, me));
         },
 
-        requestData: function(data) {
+        requestData: function($form) {
             $.ajax({
-                url: window.location.href,
-                data: data,
+                url: window.location.href + '?template=ajax',
+                data: $form.serialize(),
                 method: 'POST',
                 success: function(response) {
-                    var $response = $(response),
-                        $productDetails = $response.find('.product--details');
+                    var $response = $($.parseHTML(response)),
+                        $productDetails;
+                    $response = $($response.get(1));
 
-                    console.log($response.html());
+                    $productDetails = $response.find('.product--details');
 
                     $('.product--details').html($productDetails.html());
                 }
@@ -28,13 +29,11 @@
 
         onChange: function(event) {
             var me = this,
-                $target = $(event.target),
-                group = $target.attr('name'),
-                value = $target.val();
+                $target = $(event.target);
 
             event.preventDefault();
 
-            me.requestData(group + '=' + value);
+            me.requestData($target.parents('form'));
         }
     });
 
