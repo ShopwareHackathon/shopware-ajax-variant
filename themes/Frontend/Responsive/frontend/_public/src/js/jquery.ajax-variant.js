@@ -1,16 +1,19 @@
 ;(function($) {
     $.plugin('swAjaxVariant', {
         defaults: {
-
+            productDetailsSelector: '.product--detail-upper'
         },
 
         init: function() {
             var me = this;
 
-            me._on(me.$el, 'click', $.proxy(me.onChange, me));
+            $('body').on(me.getEventName('click'), '*[data-ajax-variants="true"]', $.proxy(me.onChange, me));
         },
 
         requestData: function($form) {
+            var me = this,
+                location = window.location.href;
+
             $.ajax({
                 url: window.location.href + '?template=ajax',
                 data: $form.serialize(),
@@ -18,11 +21,13 @@
                 success: function(response) {
                     var $response = $($.parseHTML(response)),
                         $productDetails;
+
                     $response = $($response.get(1));
+                    $productDetails = $response.find(me.opts.productDetailsSelector);
 
-                    $productDetails = $response.find('.product--details');
+                    $(me.opts.productDetailsSelector).html($productDetails.html());
+                    StateManager.addPlugin('select:not([data-no-fancy-select="true"])', 'swSelectboxReplacement')
 
-                    $('.product--details').html($productDetails.html());
                 }
             });
         },
@@ -38,6 +43,6 @@
     });
 
     $(function() {
-        $('*[data-ajax-variants="true"]').swAjaxVariant();
+        $('body').swAjaxVariant();
     });
 })(jQuery);
