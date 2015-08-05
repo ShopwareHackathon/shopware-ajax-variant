@@ -26,6 +26,8 @@
                     $productDetails = $response.find(me.opts.productDetailsSelector);
 
                     $(me.opts.productDetailsSelector).html($productDetails.html());
+                    StateManager.addPlugin('select:not([data-no-fancy-select="true"])', 'swSelectboxReplacement');
+                    StateManager.addPlugin('*[data-image-slider="true"]', 'swImageSlider', { touchControls: true })
                     $.loadingIndicator.close();
 
                 }
