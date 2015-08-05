@@ -4,7 +4,7 @@
 	<div class="configurator--variant">
 
 		{block name='frontend_detail_configurator_variant_form'}
-			<form method="post" action="{url sArticle=$sArticle.articleID sCategory=$sArticle.categoryID}" class="configurator--form">
+			<form method="post" action="{url sArticle=$sArticle.articleID sCategory=$sArticle.categoryID}" class="configurator--form" >
 
 				{foreach $configurator as $configuratorGroup}
 					{block name='frontend_detail_configurator_variant_group'}
@@ -27,7 +27,8 @@
 													   name="group[{$option.groupID}]"
 													   value="{$option.optionID}"
 													   title="{$option.optionname}"
-													   data-auto-submit="true"
+													   data-ajax-variants="true"
+
 													   {if !$option.selectable}disabled="disabled"{/if}
 													   {if $option.selected && $option.selectable}checked="checked"{/if} />
 											{/block}
