@@ -26,7 +26,7 @@
                     $productDetails = $response.find(me.opts.productDetailsSelector);
 
                     $(me.opts.productDetailsSelector).html($productDetails.html());
-                    StateManager.addPlugin('select:not([data-no-fancy-select="true"])', 'swSelectboxReplacement')
+                    $.loadingIndicator.close();
 
                 }
             });
@@ -39,6 +39,9 @@
             event.preventDefault();
 
             me.requestData($target.parents('form'));
+            $.loadingIndicator.open({
+                closeOnClick: false
+            });
         }
     });
 
