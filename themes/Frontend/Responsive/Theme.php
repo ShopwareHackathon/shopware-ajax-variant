@@ -97,6 +97,7 @@ class Theme extends \Shopware\Components\Theme
         'src/js/jquery.image-gallery.js',
         'src/js/jquery.offcanvas-html-panel.js',
         'src/js/jquery.jump-to-tab.js',
+        'src/js/jquery.ajax-variant.js',
         'src/js/jquery.shopware-responsive.js'
     ];
 
