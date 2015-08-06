@@ -51,6 +51,8 @@ class Theme extends \Shopware\Components\Theme
         'vendors/js/jquery.event.move/jquery.event.move.js',
         'vendors/js/jquery.event.swipe/jquery.event.swipe.js',
         'vendors/js/masonry/masonry.pkgd.min.js',
+        'vendors/js/rivets/rivets.bundled.min.js',
+
 
         // Shopware specific plugins
         'src/js/jquery.ie-fixes.js',
@@ -97,6 +99,7 @@ class Theme extends \Shopware\Components\Theme
         'src/js/jquery.image-gallery.js',
         'src/js/jquery.offcanvas-html-panel.js',
         'src/js/jquery.jump-to-tab.js',
+        'src/js/jquery.advanced-ajax-variant.js',
         'src/js/jquery.shopware-responsive.js'
     ];
 

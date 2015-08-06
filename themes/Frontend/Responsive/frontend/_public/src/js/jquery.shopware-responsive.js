@@ -95,6 +95,7 @@
         .addPlugin('*[data-listing-actions="true"]', 'swListingActions')
         .addPlugin('*[data-scroll="true"]', 'swScrollAnimate')
         .addPlugin('*[data-ajax-wishlist="true"]', 'swAjaxWishlist')
+        .addPlugin('*[data-advanced-ajax-variant-container="true"]', 'swAdvancedAjaxVariant')
         .addPlugin('*[data-image-gallery="true"]', 'swImageGallery')
 
         // Emotion Ajax Loader

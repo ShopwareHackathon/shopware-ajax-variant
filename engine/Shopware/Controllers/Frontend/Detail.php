@@ -160,6 +160,11 @@ class Shopware_Controllers_Frontend_Detail extends Enlight_Controller_Action
         $this->View()->sCategoryInfo = $categoryInfo;
         $this->View()->sArticle = $article;
         $this->View()->rand = md5(uniqid(rand()));
+        if ($tpl === 'json') {
+            $this->Response()->setHeader('Content-Type', 'application/json; charset=utf-8', true);
+            Shopware()->Plugins()->Controller()->ViewRenderer()->setNoRender();
+            echo json_encode($article);
+        }
     }
 
     /**
