@@ -33,6 +33,8 @@
         init: function() {
             var me = this;
 
+            me.applyDataAttributes();
+
             me.$el
                 .on(me.getEventName('click'), '*[data-ajax-variants="true"]', $.proxy(me.onChange, me))
                 .on(me.getEventName('click'), '.reset--configuration', $.proxy(me.onChange, me));
@@ -51,6 +53,10 @@
         requestData: function(values, pushState) {
             var me = this,
                 location = window.location.origin + window.location.pathname;
+
+            $.loadingIndicator.open({
+                closeOnClick: false
+            });
 
             $.ajax({
                 url: location + '?template=ajax',
@@ -123,9 +129,6 @@
             event.preventDefault();
 
             me.requestData(values, true);
-            $.loadingIndicator.open({
-                closeOnClick: false
-            });
         }
     });
 })(jQuery, window);
