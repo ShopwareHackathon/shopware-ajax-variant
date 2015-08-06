@@ -38,13 +38,6 @@
                 .on(me.getEventName('click'), '.reset--configuration', $.proxy(me.onChange, me));
 
             $(window).on("popstate", $.proxy(me.onPopState, me));
-
-            // Push the initial state to the history
-            /* window.history.pushState({
-                type: 'ajaxVariant',
-                values: null,
-                scrollPos: 0
-            }, document.title, window.location.origin + window.location.pathname); */
         },
 
         /**
